@@ -1,14 +1,10 @@
 <?php
 
-$config = array();
+//all available config vars
+//are in config.defaults.php
 
 //authentication setup
-$config['users'] = array(
-	'admin'		=>	'blah1234'
-);
-$config['root_user'] = 'admin';
+$config['users']['admin'] = 'blah1234';
 
-//paths
-$config['paths']['vhost'] = '/etc/nginx/vhosts';
-$config['paths']['nginx_config'] = '/etc/nginx/nginx.conf';
-
+//db
+$config['db']['password'] = 'J1lock93';
