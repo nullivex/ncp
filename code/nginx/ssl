@@ -1,0 +1,18 @@
+
+server {
+	listen   443;
+	server_name  {domain};
+
+	ssl  on;
+	ssl_certificate  {root}/ssl/{domain}.pem;
+	ssl_certificate_key  {root}/ssl/{domain}.key;
+	ssl_session_timeout  5m;
+	ssl_protocols  SSLv3 TLSv1;
+	ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv3:+EXP;
+	ssl_prefer_server_ciphers   on;
+
+	location / {
+		root   {root}{html};
+		index  index.html index.htm index.php;
+	}
+}

@@ -76,17 +76,17 @@ function redirect($url,$meta=false,$time=2){
 
 function run($cmd,&$return=null){
 	$output = '';
-	$cmd = '/bin/bash -c "/sbin/sudo '.addslashes($cmd).'"';
+	$cmd = '/usr/bin/sudo /bin/bash -c "'.addslashes($cmd).'"';
 	exec($cmd,$output,$return);
 	$output = implode("\n",$output);
 	dolog($cmd.': '.$output);
-	return implode("\n",$output);
+	return $output;
 }
 
 function dolog($msg){
 	$msg = date('m/d/y g:i:s').' -- '.$msg;
 	$handle = fopen(Config::get('paths','log'),'a');
-	fwrite($handle,$msg);
+	fwrite($handle,$msg."\n");
 	fclose($handle);
 }
 

@@ -19,7 +19,13 @@ $config['url']['uri'] = '';
 $config['paths']['ncp'] = dirname(__FILE__);
 $config['paths']['vhost'] = '/etc/nginx/vhosts';
 $config['paths']['nginx_config'] = '/etc/nginx/nginx.conf';
+$config['paths']['code_nginx'] = $config['paths']['ncp'].'/code/nginx';
 $config['paths']['log'] = $config['paths']['ncp'].'/logs/ncp.log';
+
+//progs
+$config['progs']['service'] = '/usr/bin/service';
+$config['progs']['sudo'] = '/usr/bin/sudo';
+$config['progs']['nginx_init'] = '/etc/init.d/nginx';
 
 //db
 $config['db']['driver'] = 'mysql';

@@ -1,0 +1,7 @@
+	location ~ ^(.*\.php).*$ {
+		root 			{root}{html};
+		fastcgi_pass   unix:/var/run/spawn-fcgi.sock;
+		fastcgi_index  index.php;
+		fastcgi_param  SCRIPT_FILENAME {root}{html}$1;
+		include fastcgi_params;
+	}

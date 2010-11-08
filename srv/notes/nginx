@@ -1,0 +1,21 @@
+== prereqs ==
+gcc openssl-devel pcre-devel zlib-devel
+
+== build string ==
+./configure \
+  --prefix=/opt/ncp/srv/nginx \
+  --sbin-path=/opt/ncp/srv/bin/nginx \
+  --conf-path=/opt/ncp/etc/nginx/nginx.conf \
+  --error-log-path=/opt/ncp/srv/logs/nginx/error.log \
+  --pid-path=/opt/ncp/srv/run/nginx/nginx.pid  \
+  --lock-path=/opt/ncp/srv/lock/nginx.lock \
+  --user=nginx \
+  --group=nginx \
+  --with-http_ssl_module \
+  --with-http_flv_module \
+  --with-http_gzip_static_module \
+  --http-log-path=/opt/ncp/logs/nginx/access.log \
+  --http-client-body-temp-path=/opt/ncp/srv/tmp/nginx/client/ \
+  --http-proxy-temp-path=/opt/ncp/srv/tmp/nginx/proxy/ \
+  --http-fastcgi-temp-path=/opt/ncp/srv/tmp/nginx/fcgi/
+

@@ -1,0 +1,69 @@
+== prereqs ==
+gcc bison bzip2-devel gmp-devel libpng-devel libxml2-devel libjpeg-devel \
+               freetype-devel mysql-devel libmcrypt-devel curl-devel aspell-devel \
+               openldap-devel cyrus-sasl-devel expat-devel httpd-devel gd-devel libXpm-devel \
+               libtool-ltdl-devel
+
+./configure \
+   --prefix=/opt/ncp/srv/php \
+   --exec-prefix=/opt/ncp/srv/php \
+   --bindir=/opt/ncp/srv/php/bin \
+   --sbindir=/opt/ncp/srv/php/sbin \
+   --sysconfdir=/opt/ncp/srv/php/etc \
+   --datadir=/opt/ncp/srv/php/usr/share \
+   --includedir=/opt/ncp/srv/php/usr/include \
+   --libdir=/opt/ncp/srv/php/lib64 \
+   --libexecdir=/opt/ncp/srv/php/libexec \
+   --localstatedir=/opt/ncp/srv/php/var \
+   --sharedstatedir=/opt/ncp/srv/php/com \
+   --mandir=/opt/ncp/srv/php/share/man \
+   --infodir=/opt/ncp/srv/php/share/info \
+   --with-libdir=lib64 \
+   --with-config-file-path=/opt/ncp/srv/etc \
+   --with-config-file-scan-dir=/opt/ncp/srv/etc/php.d \
+   --disable-debug \
+   --with-pic \
+   --disable-rpath \
+   --without-pear \
+   --with-bz2 \
+   --with-curl \
+   --with-exec-dir=/opt/ncp/srv/php/bin \
+   --with-freetype-dir=/usr \
+   --with-png-dir=/usr \
+   --with-gd \
+   --enable-gd-native-ttf \
+   --without-gdbm \
+   --with-gettext \
+   --with-gmp \
+   --with-iconv \
+   --with-jpeg-dir=/usr \
+   --with-openssl \
+   --with-png-dir=/usr \
+   --with-pspell \
+   --with-libexpat-dir=/usr \
+   --with-pcre-regex=/usr \
+   --with-zlib \
+   --with-layout=GNU \
+   --enable-exif \
+   --enable-ftp \
+   --enable-magic-quotes \
+   --enable-sockets \
+   --enable-sysvsem --enable-sysvshm --enable-sysvmsg \
+   --enable-wddx \
+   --with-kerberos \
+   --enable-shmop \
+   --enable-calendar \
+   --with-libxml-dir=/usr \
+   --enable-xml \
+   --with-xpm-dir=/usr \
+   --with-mysql=mysqlnd \
+   --with-pdo-mysql=mysqlnd \
+   --enable-zip \
+   --with-ldap \
+   --with-ldap-sasl \
+   --with-mcrypt \
+   --with-mhash \
+   --enable-mbstring \
+   --enable-cgi \
+   --enable-soap
+

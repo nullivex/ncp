@@ -20,31 +20,31 @@ class Domains {
 
 	public function createParams(){
 		return array(
+			'username'	=>	'',
 			'domain'	=>	'',
-			'root'		=>	'/var/www',
-			'html'		=>	'/html',
 			'is_php'	=>	'true',
 			'is_ssl'	=>	'true',
 			'is_php_checked'	=>	'',
-			'is_ssl_checked'	=>	'',
-			'is_create_user_checked'	=>	''
+			'is_ssl_checked'	=>	''
 		);
 	}
 
 	public function create($data){
 
+		if(!isset($data['username'])) throw new Exception("Username not set");
 		if(!isset($data['domain'])) throw new Exception("Domain not set");
-		if(!isset($data['root'])) throw new Exception("Root not set");
-		if(!isset($data['html'])) throw new Exception("Html folder not set");
 
 		//Setup Path
 		$code = Code::_get()->setPath(Config::get('paths','code_nginx'));
 
 		//Create user
-		if(isset($data['is_create_user'])){
-			run('useradd -m '.$this->user($data['domain']));
-		}
+		run('useradd -m '.$data['username']);
 
+		//Create Folders
+		$data['root'] = '/home/'.$data['username'].'/'.$data['domain'];
+		$data['html'] = '/public_html';
+		run('mkdir -p '.$data['root'].$data['html']);
+		
 		//Setup PHP
 		$php = '';
 		if(isset($data['is_php'])) $php = $code->parse('php',$data);
@@ -52,15 +52,15 @@ class Domains {
 		//Setup SSL
 		$ssl = '';
 		if(isset($data['is_ssl'])) $ssl = $code->parse('ssl',$data);
-
-		//Write Confg
+		
+		//Write Config
 		$data['php'] = $php;
 		$data['ssl'] = $ssl;
 		$vhost = $code->parse('vhost',$data);
-		file_put_contents(Config::get('paths','vhost').'/'.$data['domain'].'.conf');
+		file_put_contents(Config::get('paths','vhost').'/'.$data['domain'].'.conf',$vhost);
 		
 		//Restart Server
-		run(Config::get('progs','service').' nginx restart');
+		run(Config::get('progs','nginx_init').' restart');
 
 	}
 

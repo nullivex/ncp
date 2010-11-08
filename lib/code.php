@@ -13,6 +13,7 @@ class Code {
 
 	public function setPath($path){
 		$this->path = $path;
+		return $this;
 	}
 
 	protected function load($file){
