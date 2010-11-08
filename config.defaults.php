@@ -12,13 +12,14 @@ $config['users'] = array(
 $config['root_user'] = 'admin';
 
 //url
-$config['url']['url'] = '/';
-$config['url']['uri'] = '/';
+$config['url']['url'] = '';
+$config['url']['uri'] = '';
 
 //paths
 $config['paths']['ncp'] = dirname(__FILE__);
 $config['paths']['vhost'] = '/etc/nginx/vhosts';
 $config['paths']['nginx_config'] = '/etc/nginx/nginx.conf';
+$config['paths']['log'] = $config['paths']['ncp'].'/logs/ncp.log';
 
 //db
 $config['db']['driver'] = 'mysql';

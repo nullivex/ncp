@@ -26,6 +26,11 @@ function req($name){
 	else return null;
 }
 
+function session_delete(){
+	$args = func_get_args();
+	foreach($args as $name) unset($_SESSION[$name]);
+}
+
 function sysError($msg){
 	error($msg);
 }
@@ -37,6 +42,14 @@ function error($msg){
 
 function loginError($msg){
 	echo '<div>'.$msg.'</div>';
+}
+
+function page_header(){
+	Tpl::_get()->parse('header','header');
+}
+
+function page_footer(){
+	Tpl::_get()->parse('footer','footer');
 }
 
 function output($body){
@@ -60,3 +73,28 @@ function redirect($url,$meta=false,$time=2){
 		output(Tpl::_get()->output());
 	}
 }
+
+function run($cmd,&$return=null){
+	$output = '';
+	$cmd = '/bin/bash -c "/sbin/sudo '.addslashes($cmd).'"';
+	exec($cmd,$output,$return);
+	$output = implode("\n",$output);
+	dolog($cmd.': '.$output);
+	return implode("\n",$output);
+}
+
+function dolog($msg){
+	$msg = date('m/d/y g:i:s').' -- '.$msg;
+	$handle = fopen(Config::get('paths','log'),'a');
+	fwrite($handle,$msg);
+	fclose($handle);
+}
+
+function alert($msg,$success=true){
+	$class = '';
+	if(!$success) $class = 'failure';
+	$params['class'] = $class;
+	$params['message'] = $msg;
+	Tpl::_get()->setConstant('alert',Tpl::_get()->getConstant('alert').Tpl::_get()->parse('global','alert',$params,true));
+}
+

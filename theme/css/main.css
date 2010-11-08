@@ -1,0 +1,9 @@
+a {color: blue; text-decoration: none;}
+a:hover {text-decoration: underline;}
+
+.form {border: 1px solid lightgray; padding: 10px;}
+.form div {line-height: 170%;}
+
+.alert {border: 1px solid; padding: 5px; border-color: #215F1D; background: #95FF8F; color: #215F1D;}
+.failure {color: #7F0F0F; background: #FF9F9F; border-color: #7F0F0F;}
+.alert p {margin: 0; padding: 0;}

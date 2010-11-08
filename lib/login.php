@@ -17,6 +17,7 @@ class Login {
 	
 	public function check(){
 		if(post('login') && get('login')) return $this->process();
+		if(get('logout')) return $this->logout();
 		if(!isset($_SESSION['login'])){
 			return $this->loginPage();
 		} else {
@@ -72,6 +73,15 @@ class Login {
 		session('login',true);
 		session('login_user',$user);
 		session('login_pass',md5($pass));
+	}
+
+	protected function end(){
+		session_delete('login','login_user','login_pass');
+	}
+
+	protected function logout(){
+		$this->end();
+		redirect(Url::home(),true);
 	}
 
 }

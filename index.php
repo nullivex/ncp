@@ -16,8 +16,10 @@ define("ROOT",$config['paths']['ncp']);
 require_once(ROOT.'/src/func.php');
 require_once(ROOT.'/lib/config.php');
 require_once(ROOT.'/lib/db.php');
+require_once(ROOT.'/lib/code.php');
 require_once(ROOT.'/lib/login.php');
 require_once(ROOT.'/lib/tpl.php');
+require_once(ROOT.'/lib/url.php');
 
 //set constants
 define("NCP_VERSION","0.1.0");
@@ -38,20 +40,17 @@ try {
 
 	$act = isset($_GET['act']) ? $_GET['act'] : '';
 	switch($act){
-
-		case 'create':
-			require_once('src/create.php');		
-		break;
-
-		case 'list':
-			require_once('src/list.php');
+		
+		case 'domains':
+			require_once(ROOT.'/router/domains.php');
 		break;
 
 		default:
-			
+			require_once('ctl/domain_list.php');
 		break;
 
 	}
+
 } catch(Exception $e){
 	sysError($e->getMessage());
 }

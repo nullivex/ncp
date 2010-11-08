@@ -97,16 +97,9 @@ class Tpl {
 					$tag = (string) strval($tag);
 					$value = (string) strval($value);
 					
-					if($tag != ''){
-						
-						$rule = '@'.preg_quote('{'.$tag.'}','@').'@si';
-						
-						//Very Messy Problem with Backreference parsing
-						//Thanks to http://www.procata.com/blog/archives/2005/11/13/two-preg_replace-escaping-gotchas/
-						$value = preg_replace('/(\$|\\\\)(?=\d)/', '\\\\\1', $value);
-						
-						$data = preg_replace($rule,$value,$data);
-						
+					if(!empty($tag)){
+						$rule = '{'.$tag.'}';
+						$data = str_ireplace($rule,$value,$data);
 					}
 					
 				}
@@ -144,7 +137,11 @@ class Tpl {
 	}
 	
 	protected function parseConstants(){
-
+		
+		//url add
+		$this->setConstants(Url::_all());
+		
+		//do parse
 		if(is_array($this->constants) && count($this->constants) > 0){
 			$constants = $this->constants;
 			foreach($constants AS $tag => $value){
@@ -152,16 +149,9 @@ class Tpl {
 				$tag = (string) strval($tag);
 				$value = (string) strval($value);
 
-				if($tag != ''){
-
-					$rule = '@'.preg_quote('{'.$tag.'}','@').'@si';
-
-					//Very Messy Problem with Backreference parsing
-					//Thanks to http://www.procata.com/blog/archives/2005/11/13/two-preg_replace-escaping-gotchas/
-					$value = preg_replace('/(\$|\\\\)(?=\d)/', '\\\\\1', $value);
-
-					$this->body = preg_replace($rule,$value,$this->body);
-
+				if(!empty($tag)){
+					$rule = '{'.$tag.'}';
+					$this->body = str_ireplace($rule,$value,$this->body);
 				}
 
 			}
@@ -174,11 +164,14 @@ class Tpl {
 		//Template Constants
 		$this->setConstant('site_name',Config::get('info','site_name'));
 		$this->setConstant('uri',Config::get('url','uri'));
-		$this->setConstant('base_url',Config::get('url','url'));
+		$this->setConstant('url',Config::get('url','url'));
 		$this->setConstant('skin_url',Config::get('tpl','theme_path'));
 		$this->setConstant('ncp_version',NCP_VERSION);
 		$this->setConstant('cur_year',date('Y'));
-
+		$this->setConstant('css',Config::get('tpl','theme_path').'/css');
+		$this->setConstant('js',Config::get('url','uri').'/js');
+		$this->setConstant('img',Config::get('tpl','theme_path').'/img');
+		$this->setconstant('alert','');
 
 	}
 	

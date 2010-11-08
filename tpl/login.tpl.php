@@ -9,7 +9,7 @@ $tpl['page'] = <<<HTML
 </head>
 <body>
 <h1>Login to {site_name}</h1>
-<form action="index.php?login=true" method="post">
+<form action="{url_login}" method="post">
 <input type="hidden" name="login" value="true" />
 <div>Username</div>
 <div><input type="text" name="username" value="" /></div>
