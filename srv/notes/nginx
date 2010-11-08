@@ -1,5 +1,8 @@
 == prereqs ==
+-- redhat --
 gcc openssl-devel pcre-devel zlib-devel
+-- deb --
+gcc libssl-dev libpcre3 libpcre3-dev libpcre3-dbg zlib1g zlib1g-dev zlib1g-dbg
 
 == build string ==
 ./configure \
@@ -9,8 +12,8 @@ gcc openssl-devel pcre-devel zlib-devel
   --error-log-path=/opt/ncp/srv/logs/nginx/error.log \
   --pid-path=/opt/ncp/srv/run/nginx/nginx.pid  \
   --lock-path=/opt/ncp/srv/lock/nginx.lock \
-  --user=nginx \
-  --group=nginx \
+  --user=ncp \
+  --group=ncp \
   --with-http_ssl_module \
   --with-http_flv_module \
   --with-http_gzip_static_module \

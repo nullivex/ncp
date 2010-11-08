@@ -1,8 +1,17 @@
 == prereqs ==
+
+-- redhat --
 gcc bison bzip2-devel gmp-devel libpng-devel libxml2-devel libjpeg-devel \
-               freetype-devel mysql-devel libmcrypt-devel curl-devel aspell-devel \
-               openldap-devel cyrus-sasl-devel expat-devel httpd-devel gd-devel libXpm-devel \
-               libtool-ltdl-devel
+	freetype-devel mysql-devel libmcrypt-devel curl-devel aspell-devel \
+	openldap-devel cyrus-sasl-devel expat-devel httpd-devel gd-devel libXpm-devel \
+	libtool-ltdl-devel
+
+
+-- debian --
+gcc bison libz2-dev libgmp3-dev libpng-dev libxml2-dev libjpeg-dev \
+	libfreetype6-dev libmysqlclient-dev libmcrypt-dev libcurl-dev libaspell-dev \
+	libldap-dev libexpat-dev apache2-dev libgd-dev libxpm-dev \
+	libltdl-dev
 
 ./configure \
    --prefix=/opt/ncp/srv/php \
