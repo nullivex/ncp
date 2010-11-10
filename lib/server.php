@@ -68,7 +68,7 @@ class Server {
 
 		$this->checkRequired($data);
 
-		$code = Code::_get();
+		$code = Code::_get()->setPath(Config::get('paths','code_nginx'));
 		$server = $code->parse('server',$data);
 		file_put_contents(Config::get('paths','nginx_config'),$server);
 

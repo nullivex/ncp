@@ -53,7 +53,7 @@ $params = Server::_get()->serverParams();
 $params = array_merge($params,$_POST);
 
 $params['url_server_manage'] = Url::server();
-$params['gzip_disable'] = html_entities($params['gzip_disable']);
+$params['gzip_disable'] = htmlentities($params['gzip_disable']);
 
 Tpl::_get()->parse('server','edit',$params);
 

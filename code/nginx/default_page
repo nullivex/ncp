@@ -1,0 +1,9 @@
+<html>
+<head>
+<title>Welcome to the default page for {domain}</title>
+</head>
+<body>
+<h1>Welcome to the default page for {domain}</h1>
+<p>This page was created by {site_name}</p>
+</body>
+</html>

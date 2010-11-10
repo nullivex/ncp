@@ -1,0 +1,29 @@
+
+user {user};
+worker_processes  {worker_processes};
+
+error_log  {error_log};
+pid        {pid};
+
+events {
+    worker_connections  {worker_connections};
+    # multi_accept on;
+}
+
+http {
+    include       /etc/nginx/mime.types;
+
+    access_log  {access_log};
+
+    sendfile        {sendfile};
+    #tcp_nopush     on;
+
+    keepalive_timeout  {keepalive_timeout};
+    tcp_nodelay        {tcp_nodelay};
+
+    gzip  {gzip};
+    gzip_disable {gzip_disable};
+
+    include /etc/nginx/vhosts/*.conf;
+    include /etc/nginx/conf.d/*.conf;
+}

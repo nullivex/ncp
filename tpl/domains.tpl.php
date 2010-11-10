@@ -82,7 +82,7 @@ $tpl['edit'] = <<<HTML
 		<div>
 			<input type="checkbox" name="is_ssl" value="true" {is_ssl_checked} /> SSL Enabled?
 		</div>
-		<div><input type="submit" value="Create" /></div>
+		<div><input type="submit" value="Update" /></div>
 		</form>
 		<form action="{url_domain_manage}" method="post">
 		<input type="hidden" name="delete" value="true" />

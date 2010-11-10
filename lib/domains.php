@@ -133,6 +133,10 @@ class Domains {
 		//Setup Path
 		$code = Code::_get()->setPath(Config::get('paths','code_nginx'));
 
+		//Setup Folders
+		$data['root'] = '/home/'.$data['username'].'/'.$data['domain'];
+		$data['html'] = '/public_html';
+
 		//Setup PHP
 		$php = '';
 		if(isset($data['is_php'])){

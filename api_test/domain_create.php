@@ -13,4 +13,4 @@ $data = array(
 	'is_php'	=>	'true'
 );
 
-echo send($url.$call,array_merge(auth($username,$password),$data));
+echo send($url.$call,array_merge(auth($username,$password),$data),true);

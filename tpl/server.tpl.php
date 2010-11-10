@@ -23,7 +23,7 @@ $tpl['edit'] = <<<HTML
 	</form>
 	<h4>Server Settings</h4>
 	<div class="form">
-		<form action="{url_domain_manage}" method="post">
+		<form action="{url_server_manage}" method="post">
 		<input type="hidden" name="edit" value="true" />
 		<input type="hidden" name="domain_id" value="{domain_id}" />
 		<table cellpadding="10" cellspacing="0">
