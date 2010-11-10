@@ -43,6 +43,7 @@ class Server {
 			$result = $query->fetch();
 		}
 		$result['server_status'] = run(Config::get('progs','nginx_init').' status');
+		$result['errorlog_output'] = run('tail -30 '.$result['error_log']);
 		return $result;
 	}
 

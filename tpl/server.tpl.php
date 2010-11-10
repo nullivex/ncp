@@ -58,5 +58,8 @@ $tpl['edit'] = <<<HTML
 		</table>
 		<div><input type="submit" value="Update" /></div>
 		</form>
+		<h4>Latest Log Entries</h4>
+		<p>Most recent last</p>
+		<div><textarea style="width: 100%; height: 200px;" readonly="readonly">{errorlog_output}</textarea></div>
 	</div>
 HTML;
