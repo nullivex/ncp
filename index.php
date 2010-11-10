@@ -1,6 +1,11 @@
 <?php
-//ncp -- nginx control panel
-//light sturdy, stupid simple
+/*
+ * NCP - Nginx Control Panel
+ *
+ * Light, sturdy, stupid simple
+ *
+ * (c) Nullivex LLC, All Rights Reserved.
+ */
 
 ob_start();
 session_start();
@@ -8,6 +13,9 @@ session_start();
 //load config
 include_once('config.defaults.php');
 include_once('config.php');
+
+//set timezone
+date_default_timezone_set($config['info']['default_timezone']);
 
 //set root path
 define("ROOT",$config['paths']['ncp']);
@@ -43,6 +51,10 @@ try {
 		
 		case 'domains':
 			require_once(ROOT.'/router/domains.php');
+		break;
+
+		case 'server':
+			require_once(ROOT.'/router/server.php');
 		break;
 
 		default:

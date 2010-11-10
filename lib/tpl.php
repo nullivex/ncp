@@ -1,4 +1,11 @@
 <?php
+/*
+ * NCP - Nginx Control Panel
+ *
+ * Light, sturdy, stupid simple
+ *
+ * (c) Nullivex LLC, All Rights Reserved.
+ */
 
 class Tpl {
 
@@ -172,6 +179,12 @@ class Tpl {
 		$this->setConstant('js',Config::get('url','uri').'/js');
 		$this->setConstant('img',Config::get('tpl','theme_path').'/img');
 		$this->setconstant('alert','');
+
+		//set delayed alerts
+		if(session('delayed_alert')){
+			$this->setConstant('alert',$this->getConstant('alert').session('delayed_alert'));
+			session('delayed_alert','');
+		}
 
 	}
 	

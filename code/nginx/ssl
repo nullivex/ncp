@@ -1,6 +1,6 @@
 
 server {
-	listen   443;
+	listen   {ip}:443;
 	server_name  {domain};
 
 	ssl  on;

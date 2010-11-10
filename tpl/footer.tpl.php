@@ -1,4 +1,11 @@
 <?php
+/*
+ * NCP - Nginx Control Panel
+ *
+ * Light, sturdy, stupid simple
+ *
+ * (c) Nullivex LLC, All Rights Reserved.
+ */
 
 $tpl = array();
 

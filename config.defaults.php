@@ -1,9 +1,17 @@
 <?php
+/*
+ * NCP - Nginx Control Panel
+ *
+ * Light, sturdy, stupid simple
+ *
+ * (c) Nullivex LLC, All Rights Reserved.
+ */
 
 $config = array();
 
 //info
 $config['info']['site_name'] = 'Nginx Control Panel';
+$config['info']['default_timezone'] = 'America/Chicago';
 
 //authentication setup
 $config['users'] = array(
@@ -38,3 +46,8 @@ $config['db']['database'] = 'ncp';
 //tpl
 $config['tpl']['path'] = 'tpl';
 $config['tpl']['theme_path'] = 'theme';
+
+//api
+$config['api']['enabled'] = false;
+$config['api']['username'] = '';
+$config['api']['password'] = '';

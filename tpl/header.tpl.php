@@ -1,4 +1,11 @@
 <?php
+/*
+ * NCP - Nginx Control Panel
+ *
+ * Light, sturdy, stupid simple
+ *
+ * (c) Nullivex LLC, All Rights Reserved.
+ */
 
 $tpl = array();
 
@@ -13,7 +20,7 @@ $tpl['header'] = <<<HTML
 <div class="nav">
 	<a href="{url_home}">Home</a>
 	<a href="{url_domains}">Domains</a>
-	<a href="{url_config}">Configuration</a>
+	<a href="{url_server}">Server</a>
 	<a href="{url_logout}">Logout</a>
 </div>
 {alert}

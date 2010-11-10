@@ -9,9 +9,9 @@ gcc bison bzip2-devel gmp-devel libpng-devel libxml2-devel libjpeg-devel \
 
 -- debian --
 gcc bison libz2-dev libgmp3-dev libpng-dev libxml2-dev libjpeg-dev \
-	libfreetype6-dev libmysqlclient-dev libmcrypt-dev libcurl-dev libaspell-dev \
-	libldap-dev libexpat-dev apache2-dev libgd-dev libxpm-dev \
-	libltdl-dev
+	libfreetype6-dev libmysqlclient-dev libmcrypt-dev libcurl4-openssl-dev libaspell-dev \
+	libsasl2-dev libldap-dev libexpat-dev apache2-dev libgd-dev libxpm-dev \
+	libltdl-dev libpspell-dev 
 
 ./configure \
    --prefix=/opt/ncp/srv/php \

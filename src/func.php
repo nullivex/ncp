@@ -1,4 +1,11 @@
 <?php
+/*
+ * NCP - Nginx Control Panel
+ *
+ * Light, sturdy, stupid simple
+ *
+ * (c) Nullivex LLC, All Rights Reserved.
+ */
 
 function get($name){
 	if(isset($_GET[$name])) return $_GET[$name];
@@ -59,7 +66,7 @@ function output($body){
 }
 
 function redirect($url,$meta=false,$time=2){
-	if(empty($url)) $url = Config::get('url','url');	
+	if(empty($url)) $url = Config::get('url','url').'/index.php';
 	if(!$meta){
 		header("Location: $url");
 		output('');
@@ -90,11 +97,13 @@ function dolog($msg){
 	fclose($handle);
 }
 
-function alert($msg,$success=true){
+function alert($msg,$success=true,$delayed=false){
 	$class = '';
 	if(!$success) $class = 'failure';
 	$params['class'] = $class;
 	$params['message'] = $msg;
-	Tpl::_get()->setConstant('alert',Tpl::_get()->getConstant('alert').Tpl::_get()->parse('global','alert',$params,true));
+	$alert = Tpl::_get()->getConstant('alert').Tpl::_get()->parse('global','alert',$params,true);
+	if($delayed) session('delayed_alert',session('delayed_alert').$alert);
+	else Tpl::_get()->setConstant('alert',$alert);
 }
 

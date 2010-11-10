@@ -1,4 +1,11 @@
 <?php
+/*
+ * NCP - Nginx Control Panel
+ *
+ * Light, sturdy, stupid simple
+ *
+ * (c) Nullivex LLC, All Rights Reserved.
+ */
 
 $tpl = array();
 
@@ -6,9 +13,11 @@ $tpl['page'] = <<<HTML
 <html>
 <head>
 <title>Login to {site_name}</title>
+<link rel="stylesheet" type="text/css" href="{css}/main.css" />
 </head>
 <body>
 <h1>Login to {site_name}</h1>
+{alert}
 <form action="{url_login}" method="post">
 <input type="hidden" name="login" value="true" />
 <div>Username</div>

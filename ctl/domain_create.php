@@ -1,8 +1,11 @@
 <?php
-
-//dirty controllers
-//i think i like these better
-//dunno why
+/*
+ * NCP - Nginx Control Panel
+ *
+ * Light, sturdy, stupid simple
+ *
+ * (c) Nullivex LLC, All Rights Reserved.
+ */
 
 require_once(ROOT.'/lib/domains.php');
 
@@ -11,7 +14,8 @@ page_header();
 if(post('create')){
 	try {
 		Domains::_get()->create($_POST);
-		alert('domain added successfully');
+		alert('domain added successfully',true,true);
+		redirect(Url::domains(),true);
 	} catch (Exception $e){
 		alert($e->getMessage(),false);
 	}

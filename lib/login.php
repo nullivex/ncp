@@ -1,9 +1,17 @@
 <?php
+/*
+ * NCP - Nginx Control Panel
+ *
+ * Light, sturdy, stupid simple
+ *
+ * (c) Nullivex LLC, All Rights Reserved.
+ */
 
 class Login {
 
 	public $users;
 	public $root_user;
+	public $referskip = array('login=true');
 
 	public static function _get($user,$root_user){
 		return new Login($user,$root_user);
@@ -46,9 +54,10 @@ class Login {
 		try {
 			$this->auth(post('username'),post('password'));
 			$this->start(post('username'),post('password'));
-			redirect(session('login_referer'),true);
+			redirect($this->referrerVerify(session('login_referer')),true);
 		} catch(Exception $e){
-			loginError($e->getMessage());
+			alert($e->getMessage(),false);
+			$this->loginPage();
 		}
 	}
 
@@ -82,6 +91,14 @@ class Login {
 	protected function logout(){
 		$this->end();
 		redirect(Url::home(),true);
+	}
+
+	protected function referrerVerify($url){
+		if(!is_array($this->referskip)) return $url;
+		foreach($this->referskip as $part){
+			if(preg_match('/'.preg_quote($part).'/i',$url)) return null;
+		}
+		return $url;
 	}
 
 }

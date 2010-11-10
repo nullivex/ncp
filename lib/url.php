@@ -1,4 +1,11 @@
 <?php
+/*
+ * NCP - Nginx Control Panel
+ *
+ * Light, sturdy, stupid simple
+ *
+ * (c) Nullivex LLC, All Rights Reserved.
+ */
 
 define('inc','/');
 
@@ -8,7 +15,7 @@ class Url {
 		'home',
 		'domains',
 		'domain_create',
-		'config',
+		'server',
 		'login',
 		'logout'
 	);
@@ -37,8 +44,12 @@ class Url {
 		return self::domains().'&do=create';
 	}
 
-	public static function config(){
-		return self::prep().inc.'index.php?act=config';
+	public static function domain_manage($domain_id){
+		return self::domains().'&do=manage&domain_id='.$domain_id;
+	}
+
+	public static function server(){
+		return self::prep().inc.'index.php?act=server';
 	}
 
 	public static function login(){

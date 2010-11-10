@@ -1,7 +1,7 @@
 
 server {
 
-	listen   80; ## listen for ipv4
+	listen   {ip}:{port}; ## listen for ipv4
 
 	server_name  {domain};
 

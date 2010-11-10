@@ -1,8 +1,11 @@
 == prereqs ==
+
 -- redhat --
-gcc openssl-devel pcre-devel zlib-devel
+gcc openssl-devel pcre-devel zlib-devel spawn-fcgi
+
 -- deb --
-gcc libssl-dev libpcre3 libpcre3-dev libpcre3-dbg zlib1g zlib1g-dev zlib1g-dbg
+gcc libssl-dev libpcre3 libpcre3-dev libpcre3-dbg zlib1g zlib1g-dev zlib1g-dbg \
+spawn-fcgi
 
 == build string ==
 ./configure \
