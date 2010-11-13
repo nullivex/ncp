@@ -17,8 +17,8 @@ try {
 	if(!isset($data['domain_id']) && isset($data['domain'])){
 		$data = array_merge(Domains::_get()->paramsFromDomain($data['domain']));
 	}
-	api_output(Domains::_get()->delete($data));
+	apiOutput(Domains::_get()->delete($data));
 } catch (Exception $e){
-	api_output($e->getMessage());
+	apiOutput($e->getMessage());
 }
 
